@@ -61,22 +61,34 @@ public class Stepdefs {
 
 	@When("^unused username \"([^\"]*)\" and correct password \"([^\"]*)\" are given$")
 	public void unused_username_and_correct_password_are_given(String username, String password) throws Throwable {
-		registerNew(username, password);
+		registerNew(username, password, password);
 	}
 
-	@When("^invalid username \"([^\"]*)\" and correct password \"([^\"]*)\" are given$")
-	public void invalid_username_and_correct_password_are_given(String username, String password) throws Throwable {
-		registerNew(username, password);
+	@When("^too short username \"([^\"]*)\" and correct password \"([^\"]*)\" are given$")
+	public void too_short_username_and_correct_password_are_given(String username, String password) throws Throwable {
+		registerNew(username, password, password);
 	}
 
 	@When("^unused username \"([^\"]*)\" and too short password \"([^\"]*)\" are given$")
 	public void unused_username_and_too_shor_password_are_given(String username, String password) throws Throwable {
-		registerNew(username, password);
+		registerNew(username, password, password);
 	}
 
 	@When("^unused username \"([^\"]*)\" and alphabetical password \"([^\"]*)\" are given$")
 	public void unused_username_and_alphabetical_password_are_given(String username, String password) throws Throwable {
-		registerNew(username, password);
+		registerNew(username, password, password);
+	}
+
+	@When("^taken username \"([^\"]*)\" and correct password \"([^\"]*)\" are given$")
+	public void taken_username_and_correct_password_are_given(String username, String password) throws Throwable {
+		registerNew(username, password, password);
+		new_user_is_selected();
+		registerNew(username, password, password);
+	}
+
+	@When("^mismatching passwords are given$")
+	public void mismatching_passwords_are_given() throws Throwable {
+		registerNew("toimiva", "salainen1", "salainen2");
 	}
     
     @Then("^user is logged in$")
@@ -121,14 +133,14 @@ public class Stepdefs {
         element.submit();  
     } 
 
-	private void registerNew(String username, String password) {
+	private void registerNew(String username, String password, String confirm) {
 		assertTrue(driver.getPageSource().contains("Create username and give password"));
 		WebElement element = driver.findElement(By.name("username"));
 		element.sendKeys(username);
 		element = driver.findElement(By.name("password"));
 		element.sendKeys(password);
 		element = driver.findElement(By.name("passwordConfirmation"));
-		element.sendKeys(password);
+		element.sendKeys(confirm);
 		element.submit();
 	}
 }
