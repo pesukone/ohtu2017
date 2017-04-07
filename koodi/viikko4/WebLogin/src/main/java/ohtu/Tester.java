@@ -82,6 +82,7 @@ public class Tester {
 	}
 	
 	public static void logoutAfterCreation(WebDriver driver) {
+		System.out.println(driver.getPageSource());
 		WebElement element = driver.findElement(By.linkText("continue to application mainpage"));
 		element.click();
 		
