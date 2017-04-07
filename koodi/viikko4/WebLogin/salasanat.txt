@@ -1,2 +1,5 @@
 pekka;akkep
 jukka;akkuj
+make;install
+emerge;sync
+asdasd;asdasd
