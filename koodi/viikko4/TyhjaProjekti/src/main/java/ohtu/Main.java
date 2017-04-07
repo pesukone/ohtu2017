@@ -3,7 +3,6 @@ package ohtu;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
 
