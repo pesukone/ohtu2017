@@ -9,9 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class Stepdefs {
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = new HtmlUnitDriver();
     String baseUrl = "http://localhost:4567";
     
     @Given("^login is selected$")
@@ -45,6 +46,11 @@ public class Stepdefs {
     public void username_and_incorrect_password_are_given(String username, String password) throws Throwable {
         logInWith(username, password);
     }
+
+	@When("^nonexistent username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
+	public void nonexistent_username_and_password_are_given(String username, String password) throws Throwable {
+		logInWith(username, password);
+	}
     
     @Then("^user is logged in$")
     public void user_is_logged_in() throws Throwable {
@@ -56,7 +62,7 @@ public class Stepdefs {
         pageHasContent("invalid username or password");
         pageHasContent("Give your credentials to login");
     }     
-    
+
     @After
     public void tearDown(){
         driver.quit();
