@@ -29,6 +29,19 @@ public class Stepdefs {
 		element.click();
 	}
 
+	@Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is successfully created$")
+	public void user_with_username_and_password_is_successfully_created(String username, String password) throws Throwable {
+		new_user_is_selected();
+		registerNew(username, password, password);
+	}
+
+	@Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is unsuccessfully created$")
+	public void user_with_username_and_password_is_unsuccessfully_created(String username, String password) throws Throwable {
+		new_user_is_selected();
+		registerNew(username, password, password);
+	}
+
+
     @When("^username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
     public void username_and_password_are_given(String username, String password) throws Throwable {
         WebElement element = driver.findElement(By.name("username"));
@@ -89,6 +102,11 @@ public class Stepdefs {
 	@When("^mismatching passwords are given$")
 	public void mismatching_passwords_are_given() throws Throwable {
 		registerNew("toimiva", "salainen1", "salainen2");
+	}
+
+	@When("^incorrect username \"([^\"]*)\" and incorrect password \"([^\"]*)\" are given$")
+	public void incorrect_username_and_incorrect_password_are_given(String username, String password) throws Throwable {
+		logInWith(username, password);
 	}
     
     @Then("^user is logged in$")
