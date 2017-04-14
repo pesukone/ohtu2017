@@ -1,11 +1,10 @@
-
 package ohtu.intjoukkosovellus;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
+/*
 public class IntJoukkuYksiparametrisellaKonstruktorillaTest extends IntJoukkoTest {
     
     @Before
@@ -18,3 +17,4 @@ public class IntJoukkuYksiparametrisellaKonstruktorillaTest extends IntJoukkoTes
     
     // perii kaikki testit luokasta IntJoukkoTest
 }
+*/

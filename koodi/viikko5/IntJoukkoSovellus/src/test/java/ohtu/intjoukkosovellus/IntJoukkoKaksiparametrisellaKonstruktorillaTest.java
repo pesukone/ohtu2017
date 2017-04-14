@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/*
 public class IntJoukkoKaksiparametrisellaKonstruktorillaTest extends IntJoukkoTest {
     
     @Before
@@ -14,3 +15,4 @@ public class IntJoukkoKaksiparametrisellaKonstruktorillaTest extends IntJoukkoTe
         joukko.lisaa(3);
     }
 }
+*/
