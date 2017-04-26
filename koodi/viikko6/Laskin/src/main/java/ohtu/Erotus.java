@@ -13,4 +13,10 @@ public class Erotus extends Laskuoperaatio {
 		super.sovellus.miinus(super.lueArvo());
 		super.paivitaKentat();
 	}
+	
+	@Override
+	public void peru() {
+		super.sovellus.plus(super.edellinenArvo);
+		super.paivitaKentat();
+	}
 }

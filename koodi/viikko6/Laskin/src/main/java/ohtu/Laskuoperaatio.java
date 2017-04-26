@@ -6,17 +6,13 @@ public abstract class Laskuoperaatio implements Komento {
 	protected Sovelluslogiikka sovellus;
 	protected JTextField tuloskentta;
 	protected JTextField syotekentta;
-	protected String edellinenTulos;
+	protected int edellinenArvo;
 	
-	public Laskuoperaatio(Sovelluslogiikka logiikka, JTextField tuloskentta, JTextField syotekentta) {
+	public Laskuoperaatio(Sovelluslogiikka sovellus, JTextField tuloskentta, JTextField syotekentta) {
 		this.sovellus = sovellus;
 		this.tuloskentta = tuloskentta;
 		this.syotekentta = syotekentta;
-		try {
-			this.edellinenTulos = tuloskentta.getText();
-		} catch (Exception e) {
-			this.edellinenTulos = "";
-		}
+		this.edellinenArvo = 0;
 	}
 	
 	protected int lueArvo() {
@@ -28,16 +24,12 @@ public abstract class Laskuoperaatio implements Komento {
 			throw new IllegalArgumentException();
 		}
 		
+		this.edellinenArvo = arvo;
 		return arvo;
 	}
 	
 	protected void paivitaKentat() {
 		this.syotekentta.setText("");
 		this.tuloskentta.setText("" + this.sovellus.tulos());
-	}
-	
-	@Override
-	public void peru() {
-		this.tuloskentta.setText(this.edellinenTulos);
 	}
 }

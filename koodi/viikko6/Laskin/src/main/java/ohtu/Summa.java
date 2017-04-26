@@ -13,4 +13,10 @@ public class Summa extends Laskuoperaatio {
 		super.sovellus.plus(super.lueArvo());
 		super.paivitaKentat();
 	}
+	
+	@Override
+	public void peru() {
+		super.sovellus.miinus(super.edellinenArvo);
+		super.paivitaKentat();
+	}
 }
